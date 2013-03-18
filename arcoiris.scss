@@ -1,0 +1,25 @@
+$shade-count: 5;
+
+$primary-color: #0BE07A;
+$dark-color: #222;
+$light-color: #FAFAFA;
+
+$text-color: $dark-color;
+$header-color: $dark-color;
+$link-color: $primary-color;
+
+@for $i from 1 through $shade-count {
+	// $primary-color-mono-darken-#{$i}: darken($primary-color, ($i / $shade-count) * 100% );
+	$primary-color-mono-darken-#{$i}: shade($primary-color, ($i / $shade-count) * 100% );
+}
+
+@for $i from 1 through $shade-count {
+	// $primary-color-mono-lighten-#{$i}: lighten($primary-color, ($i / $shade-count) * 100% );
+	$primary-color-mono-lighten-#{$i}: scale-lightness($primary-color, ($i / $shade-count) * 100% );
+}
+
+@mixin gradient($color) {
+	background-color: $color;
+	background-image: -moz-linear-gradient(top, $color, darken($color, 25%));
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $color),color-stop(1, darken($color, 25%)));
+}
